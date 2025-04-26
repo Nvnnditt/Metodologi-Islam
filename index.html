@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metodologi Islam</title>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Georgia, serif;
+            background-color: #eaeaea;
+            color: #444;
+            margin: 0;
+            background-image: url('../gambar/bg-web.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 10px;
+            background-color: #fffaf0;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        #judul {
+            font-size: 28px;
+            color: #5a4f4f;
+            margin: 0;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .container ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+        .container ul li {
+            margin-left: 20px;
+            position: relative;
+        }
+        .container ul li a {
+            text-decoration: none;
+            color: #5a4f4f;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fffaf0;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            top: 100%;
+            left: 0;
+            border-radius: 4px;
+        }
+        .dropdown-content a {
+            color: #5a4f4f;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+        .dropdown-content a:hover {
+            background-color: #f0e9d9;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .content {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fffaf0;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-bottom: 5px solid #f0e9d9;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .content.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .content h2 {
+            font-size: 20px;
+            color: #5a4f4f;
+            margin: 0 0 15px 0;
+            text-align: center;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #5a4f4f;
+            display: inline-block;
+            width: auto;
+        }
+        .content p {
+            padding: 10px 0;
+            margin: 0 0 10px 0;
+            font-size: 16px;
+            color: #555;
+            line-height: 1.8;
+            text-align: justify;
+        }
+        .pendahuluan, .pembahasan, .kesimpulan {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #f0e9d9;
+            border-radius: 8px;
+        }
+        .pendahuluan h2, .pembahasan h2, .kesimpulan h2 {
+            font-size: 20px;
+            color: #5a4f4f;
+            margin: 0 0 15px 0;
+            text-align: center;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #5a4f4f;
+            display: inline-block;
+            width: auto;
+        }
+        .pendahuluan p, .pembahasan p, .kesimpulan p {
+            font-size: 16px;
+            color: #5a4f4f;
+        }
+        .anggota-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 10px;
+        }
+        .anggota-list p{
+            padding: 0;
+            margin: 0;
+            font-size: 16px;
+            color: #5a4f4f;
+            text-align: center;
+        }
+        .anggota-item {
+            flex: 0 0 30%;
+            margin: 10px;
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 5px;
+        }
+
+        .anggota-item p {
+            margin: 0;
+            font-size: 14px;
+            color: #5a4f4f;
+        }
+        .pembahasan h4 {
+            margin-left: 10px;
+            margin-top: 20px;
+            color: #5a4f4f;
+            padding-bottom: 5px;
+            border-bottom: 1px dashed #5a4f4f;
+            display: inline-block;
+        }
+        .pembahasan h5{
+            margin-left: 25px;
+            margin-top: 15px;
+            color: #5a4f4f;
+        }
+
+            @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            #judul {
+                font-size: 20px;
+                margin-bottom: 10px;
+            }
+
+            .container ul {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .container ul li {
+                margin-left: 0;
+                margin-bottom: 10px;
+            }
+
+            .anggota-item {
+                flex: 0 0 100%;
+            }
+
+            .content {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 id="judul">Metodologi Islam</h1>
+        <nav>
+        <ul>
+            <li><a href="#top">Beranda</a></li> 
+            <li><a href="#anggota">Anggota Kelompok</a></li> 
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Pembahasan</a>
+                <div class="dropdown-content">
+                    <a href="#pendahuluan">Pendahuluan</a> 
+                    <a href="#pembahasan">Pembahasan</a> 
+                    <a href="#kesimpulan">Kesimpulan</a> 
+            </div>
+        </li>
+    </ul>
+</nav>
+
+    </div>
+
+    <div class="content">
+    <h2>Anggota Kelompok</h2>
+    <div class="anggota-list" id="anggota">
+        <div class="anggota-item">
+            <img src="../gambar/profile1.jpg" alt="Foto Anggota 1" class="profile-img">
+            <p>Nouvan Abdib Ramadhan</p>
+            <p>24111814122</p>
+        </div>
+        <div class="anggota-item">
+            <img src="../gambar/profile2.jpg" alt="Foto Anggota 2" class="profile-img">
+            <p>Rayhan Fajri Alfarizqi</p>
+            <p>24111814050</p>
+        </div>
+        <div class="anggota-item">
+            <img src="../gambar/profile3.jpg" alt="Foto Anggota 3" class="profile-img">
+            <p>Dedi Firmansyah</p>
+            <p>24111814021</p>
+        </div>
+        <div class="anggota-item">
+            <img src="../gambar/profile4.jpg" alt="Foto Anggota 4" class="profile-img">
+            <p>Priyo Prakuso</p>
+            <p>24111814103</p>
+        </div>
+        <div class="anggota-item">
+            <img src="../gambar/profile5.jpg" alt="Foto Anggota 5" class="profile-img">
+            <p>Renza Alvianino</p>
+            <p>24111814011</p>
+        </div>
+        <div class="anggota-item">
+            <img src="../gambar/profile2.jpg" alt="Foto Anggota 6" class="profile-img">
+            <p>Given dimas ara dea</p>
+            <p>24111814101</p>
+        </div>
+    </div>
+    <div class="content" id="pendahuluan">
+        <h2>Pendahuluan</h2>
+        <p>Islam merupakan Agama yang sempurna dan kebenarannya sudah tidak diragukan lagi oleh orang-orang yang beriman. Berbagai ilmuwan telah mengkaji Islam dengan multidisiplin ilmu baik normative, historis, sosiologis, antropologis dan lain sebagainya. Kajian tentang Islam atau studi Islam memiliki aspek cakupan yang luas baik dari segi teks-teks agama (seperti kodifikasi al-Qur'an dan hadis, keragaman bacaan dalam qiroat al-Qur'an), Tatacara beragama, sikap dalam beragama, pemahaman terhadap teks-teks Agama dan masih banyak lagi.</p>
+        <p>Metodologi Studi Islam merupakan disiplin ilmu yang mempelajari cara-cara dan pendekatan yang digunakan dalam kajian tentang Islam secara integral dan komprehensif (Mubarok, 2017:3). Islam menjadi kajian ilmu tersendiri dengan pendekatan-pendekatan berbagai disiplin keilmuan. Hasil dari berbagai pendekatan menjadikan kajian Islam memiliki keragaman sudut pandang. Sehingga Islam dapat dimaknai kebenarannya secara universal dan dibuktikan melalui metodologi ilmiah.</p>
+    </div>
+    <div class="content" id="pembahasan">
+        <h2>Pembahasan</h2>
+        <h4>1. Gambaran Umum Metodologi Studi Islam</h4>
+        <p>
+            Studi Islam adalah bidang kajian yang tidak hanya dilakukan oleh umat Islam, tetapi juga oleh non-Muslim, terutama di Barat yang dikenal sebagai Islamic Studies. Islam, sebagai agama terakhir dan penutup, membawa pesan rahmatan lil 'alamin, disampaikan oleh Nabi Muhammad melalui wahyu Allah.
+        </p>
+        <p>
+            Untuk memahami Islam secara mendalam, pentingnya Studi Islam mencakup analisis berbagai isu, seperti definisi, ruang lingkup, tujuan, dan metode dalam kajian Islam. Pendekatan ilmiah dan objektif dalam studi ini sangat penting untuk memberikan pemahaman yang lebih baik tentang ajaran, sejarah, pemikiran, budaya, dan praktik keagamaan dalam Islam.
+        </p>
+        <h5>A. Pengertian Metodologi Studi Islam</h5>
+        <p>
+            Secara Etimologi, Metodologi berasal dari kata Method dan logos. Method bermakna cara sedangkan logos adalah ilmu. Dalam Bahasa arab metode disebut dengan istilah al thariqah, al manhaj, dan al washilah. Al thariqah berarti jalan, al manhaj berarti sistem dan al washilah bearti perantara atau mediator. (Baroroh, R. U., & Rahmawati, F. N. 2020: 180). Maka Metodologi merupakan ilmu pengetahuan yang mempelajari tentang cara-cara atau jalan yang ditempuh untuk mencapai suatu tujuan dengan hasil yang efektif dan efisien (Asmuni. 1979:90).
+        </p>
+        <h5>B. Ruang Lingkup Metodologi Studi Islam</h5>
+        <p>
+            Islam adalah agama yang membawa rahmat untuk seluruh alam semesta dan hadir sebagai penyempurna ajaran agama-agama samawi sebelumnya. Ketika Islam datang, masyarakat dunia sudah memiliki tradisi, budaya, keyakinan, serta standar moralitas masing-masing. Karena itu, ajaran Islam tidak berdiri sendiri, tetapi mengalami interaksi dengan nilai-nilai lokal melalui proses asimilasi, akulturasi, dan adaptasi budaya. Dalam perjalanan sejarahnya, Al-Qur'an dan Hadist yang berisi kebenaran absolut ditafsirkan secara beragam sesuai dengan konteks zaman, budaya, dan pemahaman masing-masing masyarakat.
+        </p>
+        <h5>C. Urgensi dan Tujuan Metodologi Studi Islam</h5>
+        <P>
+            Islam adalah agama yang menyebar ke seluruh dunia dan mendapatkan perhatian luas, baik dari ilmuwan Muslim maupun non-Muslim. Penyebaran Islam yang massif membawa dampak besar, bukan hanya dalam ranah agama, tetapi juga ekonomi, sosial, budaya, dan politik. Namun, luasnya penyebaran ini menimbulkan tantangan historis-kultural, ditandai dengan beragamnya praktik keagamaan di berbagai wilayah. Maka, dibutuhkan kajian metodologis yang dalam untuk mencari titik temu antara ajaran agama yang universal dengan praktik sosial masyarakat yang beragam.
+        </P>
+        <h4>2. Perkembangan Metodologi Studi Islam</h4>
+        <P>
+            Perkembangan metodologi kajian Islam bermula sejak diutusnya Nabi Muhammad SAW sebagai Rasul. Beliau menyebarkan ajaran Islam melalui wahyu Al-Qur'an dan mencontohkannya lewat ucapan, perilaku, dan keteladanan hidupnya, yang kemudian dikenal sebagai hadits. Pada masa ini, segala permasalahan umat langsung dikembalikan kepada Rasulullah sebagai pusat otoritas agama dan pemerintahan. Namun, setelah wafatnya Nabi pada tahun 632 M, sumber tuntunan yang otoritatif secara langsung terputus, menandai fase baru dalam perkembangan studi Islam.
+        </P>
+        <P>
+            Pada masa Khulafaur Rasyidin, peran agama dan negara tetap menyatu. Para khalifah dengan hati-hati merujuk pada Al-Qur’an dan Hadits dalam menyelesaikan masalah. Inilah awal mula kodifikasi Al-Qur'an dan penulisan hadits, yang sebelumnya dilarang untuk mencegah pencampuran dengan wahyu. Kemudian, pada abad ke-1 dan 2 Hijriah, muncul berbagai aliran pemikiran dalam Islam seiring berkembangnya metode ilmiah, melahirkan ilmu-ilmu penting seperti ushul fiqh, tafsir, hadis, tasawuf, dan logika.
+        </P>
+        <h4>3. Pendekatan dalam Metodologi Studi Islam</h4>
+        <h5>A. Pendekatan Normatif dalam Metodologi Studi Islam</h5>
+        <p>
+            Pendekatan normatif adalah pendekatan yang melihat Islam sebagai ajaran suci yang bersumber langsung dari wahyu Allah, yaitu Al-Qur’an dan Hadis, tanpa campur tangan penafsiran manusia. Fokus utama dari pendekatan ini adalah pada nilai-nilai dasar, prinsip hukum, etika, dan moral yang terkandung dalam teks-teks keagamaan. Pendekatan ini menggunakan ilmu-ilmu klasik seperti ushul fiqh, ilmu tafsir, ilmu hadis, dan kaidah fiqh sebagai alat analisisnya.
+        </p>
+        <h5>B. Pendekatan Historis dalam Metodologi Studi Islam</h5>
+        <p>
+            Pendekatan historis adalah cara memahami ajaran dan praktik Islam dengan melihat latar belakang sejarahnya. Artinya, pendekatan ini menelusuri bagaimana Islam tumbuh dan berkembang sejak masa Nabi Muhammad SAW hingga sekarang—meliputi tokoh, waktu, tempat, hingga sebab-akibat peristiwa keislaman. Pendekatan ini sangat penting karena Islam hadir dalam konteks sosial dan budaya tertentu, sehingga memahami sejarahnya akan membantu memahami makna ajarannya secara lebih utuh dan relevan dengan masa kini.
+        </p>
+        <h5>C. Pendekatan Antropologi dalam Studi Islam</h5>
+        <p>
+            Pendekatan antropologi dalam studi Islam merupakan pendekatan yang melihat agama sebagai bagian dari budaya manusia. Antropologi sendiri adalah ilmu yang mempelajari manusia secara menyeluruh, baik dari aspek fisik, sosial, budaya, bahasa, maupun sejarah. Dalam konteks studi Islam, pendekatan ini membantu menjelaskan bagaimana ajaran Islam dijalankan, dihayati, dan dibudayakan oleh masyarakat dalam konteks lokalnya.
+        </p>
+        <h5>D. Pendekatan Sosiologi</h5>
+        <p>
+            Pendekatan sosiologi dalam Metode Studi Islam merupakan salah satu upaya dalam memahami agama dengan mengamati praktek keagamaan yang hidup dan berkembang dalam masyarakat. Pendekatan ini bermanfaat untuk memahami fenomena sosial yang terkait dengan agama Islam, sebagaimana interaksi social dalam kontek keagamaan, peran agama dalam masyarakat, akulturasi nilai kebiasaan masyarakat dengan nilai agama. dinamika organisasi-organisasi Islam, dan lain sebagainya (Mahyudi, D. 2016:216). Sebagai contoh implikasi teologis dalam penafsiran ayat-ayat al-Qur'an dan hadis menggunakan pendekatan sosiologi. Pada permasalahan waris, dimana bagian anak laki-laki mendapatkan 2 berbanding 1 dari pada anak perempuan sebagaimana tercantum pada surat al-Nisa' ayat 11 :
+        </p>
+        <img src="../gambar/image.png" alt="">
+        <p>
+            Artinya:
+Allah mensyariatkan (mewajibkan) kepadamu tentang (pembagian warisan untuk) anak-anakmu, (yaitu) bagian seorang anak laki-laki sama dengan bagian dua orang anak perempuan
+
+        </p>
+        <div class="content" id="kesimpulan">
+            <h2>Kesimpulan</h2>
+            <p>
+                Metodologi Studi Islam adalah disiplin ilmu yang mempelajari cara-cara dan pendekatan yang digunakan dalam kajian tentang Islam secara integral dan komprehensif. Dalam perkembangannya, metodologi ini mengalami perubahan seiring dengan perkembangan zaman dan kebutuhan masyarakat. Pendekatan-pendekatan yang digunakan dalam studi Islam, seperti normatif, historis, antropologis, dan sosiologis, memberikan perspektif yang berbeda dalam memahami ajaran dan praktik keagamaan dalam konteks sosial dan budaya yang beragam.
+            </p>
+        </div>
+        <script>
+            const contents = document.querySelectorAll('.content');
+    
+            function showContentOnScroll() {
+                const triggerBottom = window.innerHeight * 0.8;
+    
+                contents.forEach(content => {
+                    const contentTop = content.getBoundingClientRect().top;
+    
+                    if (contentTop < triggerBottom) {
+                        content.classList.add('show');
+                    } else {
+                        content.classList.remove('show');
+                    }
+                });
+            }
+    
+            window.addEventListener('scroll', showContentOnScroll);
+            showContentOnScroll(); // Initial check
+        </script>
+</body>
+</html>
